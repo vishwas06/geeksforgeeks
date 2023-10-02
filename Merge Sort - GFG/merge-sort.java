@@ -57,49 +57,47 @@ class Merge_Sort
 
 class Solution
 {
-    
     void merge(int arr[], int l, int m, int r)
-{
-      ArrayList<Integer> temp = new ArrayList<>(); // temporary array
-        int left = l;      // starting index of left half of arr
-        int right = m + 1;   // starting index of right half of arr
-
-        //storing elements in the temporary array in a sorted manner//
-
-        while (left <= m && right <= r) {
-            if (arr[left] <= arr[right]) {
-                temp.add(arr[left]);
-                left++;
-            } else {
-                temp.add(arr[right]);
-                right++;
-            }
-        }
-
-        // if elements on the left half are still left //
-
-        while (left <= m) {
-            temp.add(arr[left]);
-            left++;
-        }
-
-        //  if elements on the right half are still left //
-        while (right <= r) {
-            temp.add(arr[right]);
-            right++;
-        }
-
-        // transfering all elements from temporary to arr //
-        for (int i = l; i <= r; i++) {
-            arr[i] = temp.get(i - l);
-        }
+    {
+         // Your code here
+         int n=arr.length;
+         ArrayList<Integer> temp= new ArrayList<>();
+         int left=l;
+         int right=m+1;
+         
+         while(left<=m && right<=r){
+             if(arr[left]<=arr[right]){
+                 temp.add(arr[left]);
+                 left++;
+             }else{
+                  temp.add(arr[right]);
+                 right++;
+             }
+         }
+         
+         while(left<=m){
+             temp.add(arr[left]);
+             left++;
+         }
+         
+          while(right<=r){
+             temp.add(arr[right]);
+             right++;
+         }
+         for(int i=l; i<=r; i++){
+             arr[i]=temp.get(i-l);
+         }
+         
     }
     void mergeSort(int arr[], int l, int r)
     {
-         if (l >= r) return;
-        int mid = (l + r) / 2 ;
-        mergeSort(arr, l, mid);  // left half
-        mergeSort(arr, mid + 1, r); // right half
-        merge(arr, l, mid, r);  // merging sorted halves
+        //code here
+        if(l==r)return;
+        
+        int mid=(l+r)/2;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid+1, r);
+        merge(arr, l, mid, r);
+        
     }
 }
