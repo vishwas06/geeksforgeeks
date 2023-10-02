@@ -34,23 +34,35 @@ public class Main {
 //User function Template for Java
 
 class Solution {
+    
+     static int lowerBound(int arr[], int m, int x){
+        int low=0;
+        int high=m-1;
+        int ans=m;
+        while(low<=high){
+            int mid=(low+high)/2;
+            if(arr[mid]>=x){
+                ans=mid;
+                high=mid-1;
+                
+            }else{
+                low=mid+1;
+            }
+            
+        }
+        
+        return ans;
+    } 
     int rowWithMax1s(int arr[][], int n, int m) {
         // code here
         int max=0;
         int row=-1;
         for(int i=0; i<n; i++){
-            int count=0;
-            for(int j=0; j<m; j++){
-                if(arr[i][j]==1){
-                    count+=1;
-                }
-            }
+            int count=m-lowerBound(arr[i], m, 1);
              if(count>max){
                 max = count;
                 row=i;
-            }
-            
-           
+             }
         }
         return row;
     }
