@@ -82,16 +82,28 @@ class Solution {
     public static boolean detectLoop(Node head){
         // Add code here
     // Using HashMap
-    HashSet<Node> hSet = new HashSet<>();
-    while(head!=null){
+    // HashSet<Node> hSet = new HashSet<>();
+    // while(head!=null){
         
         
-        if(hSet.contains(head)){
+    //     if(hSet.contains(head)){
+    //         return true;
+    //     }
+        
+    //     hSet.add(head);
+    //     head=head.next;
+    // }
+    // return false;
+    
+    Node slow_p=head;
+    Node fast_p=head;
+    while(slow_p != null && fast_p != null && fast_p.next!=null){
+        slow_p=slow_p.next;
+        fast_p=fast_p.next.next;
+        
+        if(slow_p == fast_p){
             return true;
         }
-        
-        hSet.add(head);
-        head=head.next;
     }
     return false;
     }
